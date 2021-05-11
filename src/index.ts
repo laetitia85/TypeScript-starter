@@ -1,6 +1,6 @@
-import { CreateServer } from './app/app'
+import { createServer } from './app/http/app'
 
-const app = CreateServer();
+const app = createServer();
 console.log(app);
 
 
