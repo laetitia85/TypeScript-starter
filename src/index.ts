@@ -1,3 +1,9 @@
+import { CreateServer } from './app/app'
+
+const app = CreateServer();
+console.log(app);
+
+
 // interface ISkill {
 //     name : string
 //     description : string
