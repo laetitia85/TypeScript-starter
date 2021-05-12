@@ -22,3 +22,17 @@ describe('GET /', () => {
             });
     });
 });
+
+describe('POST /user', () => {
+    it('should return 200 & valid response with test !', async (done) => {
+        request(app)
+            .post(`/api/v1/user`)
+            .expect('Content-Type', /json/)
+            .expect(200)
+            .end((err, res) => {
+                if (err) return done(err);
+                expect(res.body).toMatchObject({ message: 'test !' });
+                done();
+            });
+    });
+});

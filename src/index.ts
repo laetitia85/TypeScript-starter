@@ -1,7 +1,45 @@
 import { createServer } from './app/http/app'
+import { createConnection } from 'typeorm'
 
-const app = createServer();
-console.log(app);
+import { typeORMConfig } from './app/database/typeorm'
+
+console.log(typeORMConfig);
+
+createConnection(typeORMConfig).then(_ => {
+   createServer();
+})
+
+// import { User } from './app/database/typeorm/entities/user'
+// import { Category } from './app/database/typeorm/entities/category'
+// import { Skill } from './app/database/typeorm/entities/skill'
+// import { Level} from './app/database/typeorm/entities/level'
+// import { Progress} from './app/database/typeorm/entities/progress'
+
+// createConnection({
+//     type: 'mysql',
+//     host: 'localhost',
+//     port: 3306,
+//     username: 'root',
+//     password: "",
+//     database: 'skilltree_dev',
+//     synchronize: true,
+//     logging: true,
+//     entities: [User, Category, Skill, Level, Progress],
+// }).then(conn => {
+//     // console.log("connection etablished")
+//     let user = new User();
+//     user.firstName = "Laetitia"
+//     user.lastName = "de Bardin";
+
+//     return conn.manager
+//     .save(user)
+//     .then(user => {
+//         console.log("User has been saved. User id is", user.id);
+//     });
+
+// }).catch(error => console.log(error));
+
+createServer();
 
 
 // interface ISkill {
@@ -44,52 +82,52 @@ console.log(app);
 
 // console.log(skill1.getSkill())
 
-interface IUser {
-    id : number
-    name : string
-    first_name : string
-    email : string
-    password : number
-    getUser : () => string         
-}
+// interface IUser {
+//     id : number
+//     name : string
+//     first_name : string
+//     email : string
+//     password : number
+//     getUser : () => string         
+// }
 
-type userProps = {
-    id : number
-    name : string
-    first_name : string
-    email : string
-    password : number
-}
+// type userProps = {
+//     id : number
+//     name : string
+//     first_name : string
+//     email : string
+//     password : number
+// }
 
-class User implements IUser{
-    public id : number
-    public name : string
-    public first_name : string
-    public email : string
-    public password : number
+// class User implements IUser{
+//     public id : number
+//     public name : string
+//     public first_name : string
+//     public email : string
+//     public password : number
 
-    constructor(props :  userProps ) {
-        this.id = props.id
-        this.name = props.name;
-        this.first_name = props.first_name;
-        this.email = props.email;
-        this.password = props.password;
+//     constructor(props :  userProps ) {
+//         this.id = props.id
+//         this.name = props.name;
+//         this.first_name = props.first_name;
+//         this.email = props.email;
+//         this.password = props.password;
 
-    }
+//     }
 
-    public getUser() : string {
-        return `User : ${this.name},`
-    }
-}
+//     public getUser() : string {
+//         return `User : ${this.name},`
+//     }
+// }
 
-const userProps = {
-    id : 1,
-    name: "de Bardin",
-    first_name: "Laetitia",
-    email: "laetitia@gmail.com",
-    password: 12345678
-}
+// const userProps = {
+//     id : 1,
+//     name: "de Bardin",
+//     first_name: "Laetitia",
+//     email: "laetitia@gmail.com",
+//     password: 12345678
+// }
 
-const user1 : User = new User(userProps);
+// const user1 : User = new User(userProps);
 
-console.log(user1.getUser())
+// console.log(user1.getUser())
