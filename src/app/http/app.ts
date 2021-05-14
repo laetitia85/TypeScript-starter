@@ -21,7 +21,7 @@ export const createServer = async (): Promise<express.Application> => {
     app.use(`${API_BASE_URL}user`, V1Router);
     
     app.listen(4000, () => {
-        console.log(`[App]: Listenng on port ${4000}`)
+        console.log(`[App]: Listening on port ${4000}`)
     })
     return app
 }

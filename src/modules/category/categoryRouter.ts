@@ -4,6 +4,10 @@ import { createCategoryController } from './useCases/createCategory/'
 const categoryRouter: Router = Router();
 
 ///api/v1/skills/
-categoryRouter.get('/', (req, res) => createCategoryController.execute(req, res))
+// categoryRouter.get('/', (req, res) => createCategoryController.execute(req, res))
 
-export { categoryRouter } 
+categoryRouter.post('/', (req, res) => createCategoryController.execute(req, res))
+
+export { categoryRouter }
+
+

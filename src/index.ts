@@ -9,6 +9,8 @@ createConnection(typeORMConfig).then(_ => {
    createServer();
 })
 
+
+
 // import { User } from './app/database/typeorm/entities/user'
 // import { Category } from './app/database/typeorm/entities/category'
 // import { Skill } from './app/database/typeorm/entities/skill'
@@ -38,8 +40,6 @@ createConnection(typeORMConfig).then(_ => {
 //     });
 
 // }).catch(error => console.log(error));
-
-createServer();
 
 
 // interface ISkill {
