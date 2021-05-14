@@ -10,7 +10,7 @@ export class Progress extends BaseEntity{
     id: number;
 
     @Column()
-    date: number;
+    date: Date;
 
     @ManyToOne(() => Progress,progress =>progress.users)
     users: User;
