@@ -9,8 +9,6 @@ export class CreateCategory {
         this.categoryRepo = categoryRepo
     }
 
-    // public async getCategories() {
-    //     return await this.categoryRepo.getCategories();
         public async execute(props: categoryProps) {
             return await this.categoryRepo.create(props);
         }

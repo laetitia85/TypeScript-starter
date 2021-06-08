@@ -30,13 +30,13 @@ export class CreateSkillController {
     }
 
     
-    if (!categoryId) {
-        return res.status(400).json({
-            error: {
-                message: 'SkillId is required'
-            }
-        });
-    }
+    // if (!categoryId) {
+    //     return res.status(400).json({
+    //         error: {
+    //             message: 'CategoryId is required'
+    //         }
+    //     });
+    // }
 
 
     const skills = await this.useCase.execute({ name, description, categoryId });

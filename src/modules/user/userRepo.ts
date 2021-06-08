@@ -10,6 +10,7 @@ export class UserRepo  {
     public async create(userProps: userProps) {
         const UserEntity = this.entities.User
 
-        return await UserEntity.create({ first_name: userProps.first_name, last_name: userProps.last_name}).save()
+        return await UserEntity.create({ firstname: userProps.firstname, lastname: userProps.lastname, 
+            username: userProps.username, email: userProps.email, password: userProps.password}).save()
     }
 } 

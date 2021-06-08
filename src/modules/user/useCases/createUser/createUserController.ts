@@ -11,26 +11,51 @@ export class CreateUserController {
 
     public async execute(req: Request, res: Response) {
 
-    const { first_name, last_name} = req.body
+    const { firstname, lastname, username, email, password } = req.body
 
-    if (!first_name) {
+    
+    if (!firstname) {
         return res.status(400).json({
             error: {
-                message: 'First_name is required'
+                message: 'Firstname is required'
+            }
+        });
+    }
+    
+    if (!lastname) {
+        return res.status(400).json({
+            error: {
+                message: 'Lastname is required'
+            }
+        });
+    }
+    
+    if (!username) {
+        return res.status(400).json({
+            error: {
+                message: 'Username is required'
             }
         });
     }
 
-    if (!last_name) {
+    if (!email) {
         return res.status(400).json({
             error: {
-                message: 'Last_name is required'
+                message: 'Email is required'
+            }
+        });
+    }
+
+    if (!password) {
+        return res.status(400).json({
+            error: {
+                message: 'Password is required'
             }
         });
     }
 
 
-    const users = await this.useCase.execute({ first_name, last_name });
+    const users = await this.useCase.execute({ firstname, lastname, username, email, password });
     console.log('Controller users result', users);
 
     res.status(200).json(users);

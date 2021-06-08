@@ -10,6 +10,6 @@ export class ProgressRepo  {
     public async create(progressProps: progressProps) {
         const ProgressEntity = this.entities.Progress
 
-        return await ProgressEntity.create({ date: progressProps.date }).save()
+        return await ProgressEntity.create({student: progressProps.student, skill : progressProps.skill, level: progressProps.level}).save()
     }
 } 

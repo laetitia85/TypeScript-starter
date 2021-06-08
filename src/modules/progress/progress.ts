@@ -1,23 +1,30 @@
 interface IProgress {
     id:number
-    date: Date
-    
+    student: number
+    skill : number
+    level : number
+   
 }
 
 export type ProgressProps = {
     id:number
-    date:Date
-    
+    student: number
+    skill : number
+    level : number
+   
 }
 
 export class Progress implements IProgress{
     public id: number
-    public date: Date
+    public student: number
+    public skill : number
+    public level : number
    
-
     constructor (props: ProgressProps) {
         this.id = props.id;
-        this.date = props.date
+        this.student = props.student;
+        this.skill = props.skill;
+        this.level = props.level;
        
     }
 }

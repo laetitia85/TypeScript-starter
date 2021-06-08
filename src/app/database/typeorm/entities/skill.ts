@@ -17,7 +17,7 @@ export class Skill extends BaseEntity{
     @ManyToOne(() => Category, category => category.skills)
     category: Category;
 
-    @OneToMany(() => Skill, skill => skill.progresses)
+    @OneToMany(() =>Progress, progress => progress.skill)
     progresses: Progress[];
 
 } 

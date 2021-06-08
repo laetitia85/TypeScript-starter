@@ -1,24 +1,35 @@
 interface IUser {
     id:number
-    first_name:string
-    last_name:string
+    firstname: string;
+    lastname: string;
+    username: string;
+    email:string
+    password:string
 }
-
 
 export type UserProps = {
     id:number
-    first_name:string
-    last_name:string
+    firstname: string;
+    lastname: string;
+    username: string;
+    email:string
+    password:string
 }
 
 export class User implements IUser{
-    public id: number
-    public first_name: string
-    public last_name:string
-
+    public id: number;
+    public firstname: string;
+    public lastname: string;
+    public username: string;
+    public email: string
+    public password:string
+   
     constructor (props: UserProps) {
         this.id = props.id;
-        this.first_name = props.first_name
-        this.last_name = props.last_name
+        this.firstname = props.firstname;
+        this.lastname = props.lastname;
+        this.username = props.username;
+        this.email = props.email;
+        this.password = props.password;
     }
 }

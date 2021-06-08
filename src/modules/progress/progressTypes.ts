@@ -1,3 +1,5 @@
 export type progressProps = {
-    date: Date,
+    student : number,
+    skill : number,
+    level : number,
 }

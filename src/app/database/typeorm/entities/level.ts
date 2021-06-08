@@ -13,7 +13,7 @@ export class Level extends BaseEntity{
     @Column()
     name: string;
 
-    @OneToMany(() => Level, level => level.progresses)
+    @OneToMany(() => Progress, progress => progress.level)
     progresses: Progress[];
 
 } 

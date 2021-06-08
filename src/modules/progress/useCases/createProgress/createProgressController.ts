@@ -11,20 +11,36 @@ export class CreateProgressController {
 
     public async execute(req: Request, res: Response) {
 
-    const { date } = req.body
+    const { student, skill, level } = req.body
 
-    if (!date) {
+    if (!student) {
         return res.status(400).json({
             error: {
-                message: 'Date is required'
+                message: 'Student is required'
             }
         });
     }
 
-    const progresses = await this.useCase.execute({ date });
-    console.log('Controller progresses result', progresses);
+    if (!level) {
+        return res.status(400).json({
+            error: {
+                message: 'Level is required'
+            }
+        });
+    }
 
-    res.status(200).json(progresses);
+    if (!skill) {
+        return res.status(400).json({
+            error: {
+                message: 'Skill is required'
+            }
+        });
+    }
+
+    const progress = await this.useCase.execute({ student, skill, level });
+    console.log('Controller progress result', progress);
+
+    res.status(200).json(progress);
 
     }
 }

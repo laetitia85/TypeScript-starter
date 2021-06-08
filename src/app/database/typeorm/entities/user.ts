@@ -1,5 +1,5 @@
-import {Entity, PrimaryGeneratedColumn, Column, OneToMany, BaseEntity} from "typeorm";
-import { Progress } from './progress'
+import {Entity, PrimaryGeneratedColumn, Column, OneToOne, BaseEntity} from "typeorm";
+import { Student } from './student'
 
 @Entity()
 export class User extends BaseEntity{
@@ -8,15 +8,21 @@ export class User extends BaseEntity{
     id: number;
 
     @Column()
-    first_name: string;
+    firstname: string;
 
     @Column()
-    last_name: string;
+    lastname: string;
 
-    // @Column({nullable: true})
-    // isActive: boolean;
+    @Column()
+    username: string;
 
-    @OneToMany(() => User, user => user.progresses)
-    progresses: Progress[];
+    @Column()
+    email: string;
+
+    @Column()
+    password: string;
+
+  @OneToOne(() => Student, student => student.user)
+  student: Student
 
 } 
