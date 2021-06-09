@@ -12,7 +12,7 @@ export class CreateCategoryController {
     public async execute(req: Request, res: Response) {
 
     //On récupère le body
-    const { id, name, description } = req.body
+    const { name, description } = req.body
 
     //Si le body est pas valide, on renvoie une 400
     if (!name) {
@@ -32,7 +32,7 @@ export class CreateCategoryController {
     }
 
 
-    const categories = await this.useCase.execute({ id, name, description });
+    const categories = await this.useCase.execute({ name, description });
     console.log('Controller categories result', categories);
 
     res.status(200).json(categories);

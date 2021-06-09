@@ -16,7 +16,7 @@ export const createServer = async (): Promise<express.Application> => {
     
     app.use(`${API_BASE_URL}`, V1Router);
 
-    app.use(`${API_BASE_URL}documentation`, swaggerUi.serve, swaggerUi.setup(swaggerConfig));
+    app.use(`${API_BASE_URL}documentation/`, swaggerUi.serve, swaggerUi.setup(swaggerConfig));
 
     app.use(`${API_BASE_URL}user`, V1Router);
     

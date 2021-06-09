@@ -4,23 +4,17 @@ import { Student } from './student'
 @Entity()
 export class User extends BaseEntity{
 
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn('uuid')
     id: number;
 
-    @Column()
-    firstname: string;
+    // @Column({unique: true, name: 'username'})
+    // username!: string;
 
-    @Column()
-    lastname: string;
-
-    @Column()
-    username: string;
-
-    @Column()
+    @Column({ unique: true })
     email: string;
 
     @Column()
-    password: string;
+    password!: string;
 
   @OneToOne(() => Student, student => student.user)
   student: Student

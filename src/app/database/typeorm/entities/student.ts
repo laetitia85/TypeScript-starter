@@ -14,10 +14,12 @@ export class Student extends BaseEntity{
     @Column()
     last_name: string;
 
+    @OneToOne(() => User, user => user.student)
+    @JoinColumn() user: User
+
     @OneToMany(() => Progress, progress => progress.student)
     progresses: Progress[];
 
-    @OneToOne(() => User, user => user.student)
-    @JoinColumn() user: User
+  
 
 } 

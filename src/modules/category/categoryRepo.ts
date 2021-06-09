@@ -12,19 +12,25 @@ export class CategoryRepo  {
         return await CategoryEntity.create({ name: categoryProps.name, description: categoryProps.description }).save()
     }
 
-    public async getCategories(categoryProps: categoryProps) {
+    public async getCategoryById(categoryId: number) {
         const CategoryEntity = this.entities.Category
-        return await CategoryEntity.getCategories({ name: categoryProps.name, description: categoryProps.description })
+
+        return await CategoryEntity.findOne(categoryId)
     }
 
-    public async remove(categoryProps: categoryProps) {
-        const CategoryEntity = this.entities.Category.findOne({
-            where: {
-                id: categoryProps.id
-            }
-        });
-        return await CategoryEntity.remove({ id: categoryProps.id, name: categoryProps.name, description: categoryProps.description })
-    }
+    // public async getCategories(categoryProps: categoryProps) {
+    //     const CategoryEntity = this.entities.Category
+    //     return await CategoryEntity.getCategories({ name: categoryProps.name, description: categoryProps.description })
+    // }
+
+    // public async remove(categoryProps: categoryProps) {
+    //     const CategoryEntity = this.entities.Category.findOne({
+    //         where: {
+    //             id: categoryProps.id
+    //         }
+    //     });
+    //     return await CategoryEntity.remove({ id: categoryProps.id, name: categoryProps.name, description: categoryProps.description })
+    // }
 
 
     // public async update(categoryProps: categoryProps) {

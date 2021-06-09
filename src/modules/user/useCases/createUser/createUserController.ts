@@ -1,5 +1,10 @@
 import { CreateUser } from './createUser'
 import { Request, Response } from 'express'
+import { validate } from 'class-validator'
+// import { parseError } from '../../../../utils/parseError'
+
+//DTO
+import { RequestCreateUserDto } from './createUserDto'
 
 //Controller
 export class CreateUserController {
@@ -11,54 +16,34 @@ export class CreateUserController {
 
     public async execute(req: Request, res: Response) {
 
-    const { firstname, lastname, username, email, password } = req.body
+        
+        const requestUserDto = new RequestCreateUserDto(req.body);
 
-    
-    if (!firstname) {
-        return res.status(400).json({
-            error: {
-                message: 'Firstname is required'
+        const errors = await validate(requestUserDto);
+        console.log('Request DTO create user errors : ', errors);
+
+        // const parsedErrors = await parseError(errors);
+        // console.log(parsedErrors);
+
+        const dtoErrors = await requestUserDto.isValid(requestUserDto)
+
+        if (!!dtoErrors) {
+            return res.status(400).json(dtoErrors);
+        }
+        try {
+            const result = await this.useCase.execute(req.body);
+
+            if (!result.success) {
+                return res.status(400).json(result.message)
             }
-        });
-    }
-    
-    if (!lastname) {
-        return res.status(400).json({
-            error: {
-                message: 'Lastname is required'
-            }
-        });
-    }
-    
-    if (!username) {
-        return res.status(400).json({
-            error: {
-                message: 'Username is required'
-            }
-        });
-    }
 
-    if (!email) {
-        return res.status(400).json({
-            error: {
-                message: 'Email is required'
-            }
-        });
-    }
+            console.log('result', result);
 
-    if (!password) {
-        return res.status(400).json({
-            error: {
-                message: 'Password is required'
-            }
-        });
-    }
-
-
-    const users = await this.useCase.execute({ firstname, lastname, username, email, password });
-    console.log('Controller users result', users);
-
-    res.status(200).json(users);
+            return res.status(201).json();
+        }
+        catch (err) {
+            console.log('create controllers errors :', err);
+        }
 
     }
 }
